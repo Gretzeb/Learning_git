@@ -64,7 +64,7 @@ sudo apt-get install git
 + __使用__
 1. 创建文件code.txt:
    > ```
-   > This is the first line
+   > this is the new shit
    > ```
    >
 2. 创建版本
@@ -92,12 +92,12 @@ sudo apt-get install git
    > Author: 用户名<邮箱>
    > Date    日期时间
    > 
-   >       version_01
+   >       version01
    > ```
 4. 添加一行：
    > ```
-   > This is the first line
-   > This is the second line
+   > this is the new shit
+   > sorry for that shit
    > ```
 5. 再创建一个版本并查看记录，步骤同上 
 6. 退回版本1，使用命令：
@@ -120,4 +120,28 @@ sudo apt-get install git
    > ```
    > 借此在新终端中实现查阅版本号并退回版本
 
++__工作区和暂存区__
+1. 工作区(Working Directory)  
+
+   > Learning_git就叫工作区
+2. 版本库(Repository)与暂存区(index)
+   >+ .git目录即为版本库，其中有一个叫index的暂存区，有自动创建的第一个分支master，以及指向master的一个指针HEAD.    
+   >+ 'git add'实际上是将修改过的文件添加到暂存区；   
+   >+ 'git commit'实际上是将暂存区的所有内容提交到当前分支.   
+
+   示例：
+   > 先后编辑 code.txt 与 note.md  
+   > code.txt: 
+   > ```
+   > this is the new shit
+   > sorry for that shit
+   > I'm just kidding
+   > ```
+   > 将两个文件同时add并commit：
+   > ```
+   > git add code.txt
+   > git add note.md
+   > git commit -m '合体1'
+   > ```
+   > 
 
