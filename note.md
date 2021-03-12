@@ -72,7 +72,7 @@ sudo apt-get install git
    > git add code.txt
    > git commit -m 'version_01'
    > ```
-   >> 此时报错 '***请告诉我你是谁‘，解决办法：
+   >> 此时报错 '***请告诉我你是谁'，解决办法：
    >> ```
    >> cd .git
    >> vim config
@@ -107,7 +107,7 @@ sudo apt-get install git
    > _^的数表示前几个版本_
    > 或者
    > ```
-   > git reste --hard HEAD~1
+   > git reset --hard HEAD~1
    > ```
    > _~后数字表示前几个版本_
 7. 再次返回到版本2，使用命令：
@@ -120,9 +120,8 @@ sudo apt-get install git
    > ```
    > 借此在新终端中实现查阅版本号并退回版本
 
-+__工作区和暂存区__
++ __工作区和暂存区__
 1. 工作区(Working Directory)  
-
    > Learning_git就叫工作区
 2. 版本库(Repository)与暂存区(index)
    >+ .git目录即为版本库，其中有一个叫index的暂存区，有自动创建的第一个分支master，以及指向master的一个指针HEAD.    
@@ -143,5 +142,64 @@ sudo apt-get install git
    > git add note.md
    > git commit -m '合体1'
    > ```
-   > 
+   > 这个版本里有两个修改后的文件    
+3. 管理修改
+   > git管理的文件修改，只提交暂存区的修改来创建版本
+   >+ 编辑code.txt并add.
+   > ```
+   > this is the new shit
+   > sorry for that shit
+   > I'm just kidding
+   > silence, wench
+   > ```
+   > ```
+   > git add code.txt
+   > ```
+   >+ 再次修改，不add
+   > ```
+   > this is the new shit
+   > sorry for that shit
+   > I'm just kidding
+   > silence, wench
+   > I don't wanna be a whorn anymore
+   > ```
+   >+ commit一个新的版本，并查看status   
+   >
+   > 第二次的改动并没有添加到暂存区，所以创建版本时没有被提交
+4. 撤销修改
+   >+ 用'git checkout -- <文件>'来丢弃工作区的改动；前提是还没提交到暂存区，即还没add
+   >+ 用'git reset HEAD <文件>'可以把暂存区的修改撤销；前提是还没有提交到版本库，即还没commit
+   >+ 非凡的手贱让你把错误的版本一路提交到了版本库，那就只能直接版本回退
+5. 对比文件的不同
+   >+ 对比工作区和某个版本文件的不同
+   >```
+   > git diff HEAD -- <文件>
+   >```
+   >+ 对比两个版本文件的不同
+   >```
+   > git diff HEAD HEAD^ -- <文件>
+   >```
+   >+ 后者比前者多的标绿色，少的红色
+6. 删除文件   
 
+   *删除文件 ' rm <文件> '之后*
+   >+ 确实要删除
+   >```
+   > git rm <文件>
+   > git commit -m '删除文件<文件>'
+   >```
+   >+  并不想删除
+   >```
+   > git checkout - <文件>
+   >```
+   >(只能恢复最新版本，暂存区中的改动不会复原)  
+   
++ __分支管理__
+1. 概念
+   > 主分支：master. HEAD指向master, master指向提交版本。   
+
+   > 创建一个新分支即创建一个新指针，master仍指向原提交，HEAD指向新的分支，新的分支指向原提交，版本更新后HEAD和新的分支指向新的提交，而master仍指向原提交。   
+
+   > 合并分支只要让master指向和当前新分支指向的提交即可，事后可以删掉新分支，因为它只是个指针
+2. 创建和合并分支的操作
+   > 
