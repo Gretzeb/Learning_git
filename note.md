@@ -204,7 +204,13 @@ sudo apt-get install git
    此时~/.ssh目录下出现两个文件：   
    >*公钥为 id_rsa.pub*   
    >*私钥为 id_rsa*     
-   
+
    cat公钥，复制其内容到    
-   github -> settings -> SSH and GPG keys -> New SSH key    
+   > github -> settings -> SSH and GPG keys -> New SSH key    
+
    并填写标题
+### 克隆项目
+   使用如下代码从用ssh地址克隆代码
+   ```
+   git clone git@github.com:<XXX>.git
+   ```
