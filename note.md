@@ -214,3 +214,27 @@ sudo apt-get install git
    ```
    git clone git@github.com:<XXX>.git
    ```
+### 推送拉取分支
+   1. 添加一个新的远程库，指定简称
+   ```
+   git remote add [简称] git@github.com:<XXX>.git
+   git remote add origin git@github.com:Gretzeb/Learning_git.git
+   ```
+   2. 查看当前远程库配置
+   ```
+   git remote -v
+   ```
+   3. 提取远程库
+   ```
+   git fetch origin                                  从远程库下载分支数据
+   git merge origin/master               将远程仓库的分支合并到当前分支
+   git branch --set-upstream-to=origin/master master        本地分支跟踪服务器分支
+   ```
+   4. 推送
+   ```
+   git push origin master
+   ```
+   5. 拉取
+   ```
+   git pull origin master
+   ```
